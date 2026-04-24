@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 450" fill="none">
+  <rect width="600" height="450" fill="#f0f4ff"/>
+  <rect x="150" y="100" width="300" height="250" rx="12" fill="#e8f0fe" stroke="#1a73e8" stroke-width="2"/>
+  <rect x="170" y="120" width="260" height="180" rx="8" fill="#fff" stroke="#dadce0"/>
+  <!-- LED grid pattern -->
+  <g fill="#fbbc04" opacity="0.7">
+    <circle cx="210" cy="170" r="6"/><circle cx="240" cy="170" r="6"/><circle cx="270" cy="170" r="6"/>
+    <circle cx="300" cy="170" r="6"/><circle cx="330" cy="170" r="6"/><circle cx="360" cy="170" r="6"/>
+    <circle cx="210" cy="200" r="6"/><circle cx="240" cy="200" r="6"/><circle cx="270" cy="200" r="6"/>
+    <circle cx="300" cy="200" r="6"/><circle cx="330" cy="200" r="6"/><circle cx="360" cy="200" r="6"/>
+    <circle cx="210" cy="230" r="6"/><circle cx="240" cy="230" r="6"/><circle cx="270" cy="230" r="6"/>
+    <circle cx="300" cy="230" r="6"/><circle cx="330" cy="230" r="6"/><circle cx="360" cy="230" r="6"/>
+    <circle cx="210" cy="260" r="6"/><circle cx="240" cy="260" r="6"/><circle cx="270" cy="260" r="6"/>
+    <circle cx="300" cy="260" r="6"/><circle cx="330" cy="260" r="6"/><circle cx="360" cy="260" r="6"/>
+  </g>
+  <!-- Light rays -->
+  <g stroke="#fbbc04" stroke-width="1.5" opacity="0.4">
+    <line x1="300" y1="300" x2="200" y2="400"/><line x1="300" y1="300" x2="300" y2="420"/>
+    <line x1="300" y1="300" x2="400" y2="400"/><line x1="300" y1="300" x2="160" y2="380"/>
+    <line x1="300" y1="300" x2="440" y2="380"/>
+  </g>
+  <text x="300" y="390" text-anchor="middle" font-family="sans-serif" font-size="14" fill="#70757a">WST-P60-40W LED 平板燈</text>
+  <text x="300" y="412" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#aaa">600 × 600 mm</text>
+</svg>

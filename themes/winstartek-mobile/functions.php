@@ -23,6 +23,13 @@ add_action('after_setup_theme', 'winstartek_setup');
 function winstartek_enqueue(): void {
     $ver = wp_get_theme()->get('Version');
     wp_enqueue_style('winstartek-mobile', get_theme_file_uri('assets/css/mobile.css'), [], $ver);
+
+    // Load product page CSS only on product template pages
+    if (is_page_template('page-product-sample.php')) {
+        wp_enqueue_style('winstartek-product', get_theme_file_uri('assets/css/product.css'), ['winstartek-mobile'], $ver);
+        wp_enqueue_script('winstartek-product-faq', get_theme_file_uri('assets/js/product-faq.js'), [], $ver, true);
+    }
+
     wp_enqueue_script('winstartek-mobile', get_theme_file_uri('assets/js/mobile.js'), [], $ver, true);
 }
 add_action('wp_enqueue_scripts', 'winstartek_enqueue');
