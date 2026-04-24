@@ -41,6 +41,7 @@ services:
       - ./themes/winstartek-mobile:/var/www/html/wp-content/themes/winstartek-mobile
       - ./plugins:/var/www/html/wp-content/plugins/winstartek-plugins
       - ./uploads.ini:/usr/local/etc/php/conf.d/uploads.ini
+      - ./exports:/var/www/html/wp-content/ai1wm-backups
     networks:
       - wordpress_net
 
