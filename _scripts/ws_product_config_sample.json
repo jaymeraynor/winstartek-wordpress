@@ -1,0 +1,132 @@
+{
+  "_comment_": "中輝產品系列頁設定範例。每個系列一個 JSON。同型號不同尺寸/瓦數放 variants。",
+
+  "title":            "LED 嵌燈",
+  "slug":             "products/indoor-and-commercial-lighting/recessed-downlight",
+  "post_id":          0,
+  "parent_id":        20106,
+  "canonical":        "https://winstartek.com/products/indoor-and-commercial-lighting/recessed-downlight/",
+
+  "focus_keyword":    "LED 嵌燈",
+  "meta_title":       "LED 嵌燈｜中輝光電 - 商辦／飯店天花嵌入式照明 BSMI 認證",
+  "meta_description": "中輝 LED 嵌燈 5W-20W 全瓦數，2.5/3/4/5/6/8 吋孔徑齊全，光效 90+ lm/W，3 種色溫，CRI≥80。商辦、飯店、商場天花嵌入式照明專用，BSMI/節能標章認證，3 年保固。",
+
+  "brand":            "中輝光電 Winstartek",
+  "category":         "LED Recessed Downlight / Commercial Lighting",
+  "currency":         "TWD",
+  "product_group_id": "WS-RD",
+
+  "tldr":             "中輝 LED 嵌燈為天花板嵌入式照明燈具，提供 2.5-8 吋全孔徑、5W-20W 功率區間，光效 90 lm/W 以上，廣泛用於辦公室、飯店、商場與住宅天花板照明。",
+
+  "hero": {
+    "file":    "2024/04/recessed-downlight.jpg",
+    "title":   "LED 嵌燈 中輝光電",
+    "alt":     "中輝 LED 嵌燈 多孔徑全功率",
+    "caption": "中輝 LED 嵌燈 — 2.5\" 至 8\" 全孔徑系列"
+  },
+
+  "specs": [
+    ["類型",       "LED 嵌入式天花燈"],
+    ["孔徑選擇",   "2.5\" / 3\" / 4\" / 5\" / 6\" / 8\""],
+    ["功率範圍",   "5W – 20W"],
+    ["光通量",     "450 – 2,000 lm"],
+    ["光效",       "≥ 90 lm/W"],
+    ["色溫",       "3000K / 4000K / 5700K"],
+    ["演色性 CRI", "≥ 80"],
+    ["工作電壓",   "AC 100-277V"],
+    ["光束角",     "30° / 60° / 120°"],
+    ["防護等級",   "IP20"],
+    ["壽命",       "30,000 小時"],
+    ["認證",       "BSMI · 節能標章"],
+    ["保固",       "3 年"]
+  ],
+
+  "features": [
+    ["精準聚光",    "30°/60°/120° 多種光束角，適用重點照明、洗牆、補光不同需求。"],
+    ["孔徑齊全",    "2.5 至 8 吋全系列，適合既有天花板開孔尺寸無需重新施作。"],
+    ["三種色溫",    "3000K 暖白／4000K 自然白／5700K 冷白皆有。"],
+    ["薄型化設計",  "嵌入深度僅 50-70mm，不佔空間。"],
+    ["高品質驅動",  "採用 IC 恆流驅動，閃爍 < 5%，不傷眼。"],
+    ["快速安裝",    "彈簧扣具設計，單人即可安裝。"]
+  ],
+
+  "scenarios_intro": "中輝 LED 嵌燈廣泛應用於下列場景：",
+  "scenarios": [
+    {"image": "https://winstartek.com/wp-content/uploads/2024/04/嵌燈-辦公室.jpg",
+     "caption": "辦公室／商辦"},
+    {"image": "https://winstartek.com/wp-content/uploads/2024/04/嵌燈-飯店.jpg",
+     "caption": "飯店／旅宿"},
+    {"image": "https://winstartek.com/wp-content/uploads/2024/04/嵌燈-商場.jpg",
+     "caption": "商場／百貨"}
+  ],
+  "app_list": [
+    "辦公室／商辦天花照明",
+    "飯店大廳／客房照明",
+    "商場／百貨重點照明",
+    "餐廳／咖啡廳氛圍照明",
+    "住宅客廳／走道",
+    "醫院／診所",
+    "汽車展示間",
+    "美術館／藝廊"
+  ],
+
+  "installation": {
+    "title": "安裝方式",
+    "headers": ["孔徑", "嵌入深度", "適用天花板厚度"],
+    "rows": [
+      ["2.5\"", "50 mm", "≥ 60 mm"],
+      ["3\"",   "55 mm", "≥ 65 mm"],
+      ["4\"",   "60 mm", "≥ 70 mm"],
+      ["5\"",   "65 mm", "≥ 75 mm"],
+      ["6\"",   "70 mm", "≥ 80 mm"],
+      ["8\"",   "75 mm", "≥ 85 mm"]
+    ]
+  },
+
+  "variants": [
+    {"sku":"WS-RD-25-5",  "dim":"2.5\"", "watt":5,  "lumen":450,  "room":"走道／櫃內", "price":680},
+    {"sku":"WS-RD-30-7",  "dim":"3\"",   "watt":7,  "lumen":650,  "room":"廁所／玄關", "price":750},
+    {"sku":"WS-RD-40-10", "dim":"4\"",   "watt":10, "lumen":950,  "room":"住宅／走道", "price":880},
+    {"sku":"WS-RD-50-12", "dim":"5\"",   "watt":12, "lumen":1150, "room":"客廳／辦公", "price":980},
+    {"sku":"WS-RD-60-15", "dim":"6\"",   "watt":15, "lumen":1450, "room":"辦公／飯店", "price":1180},
+    {"sku":"WS-RD-80-20", "dim":"8\"",   "watt":20, "lumen":2000, "room":"商場／挑高", "price":1480}
+  ],
+
+  "comparison": {
+    "title": "LED 嵌燈 vs 傳統 鹵素／省電燈泡 嵌燈",
+    "headers": ["比較項目", "中輝 LED 嵌燈", "傳統鹵素／省電嵌燈"],
+    "rows": [
+      ["光效（lm/W）", "≥ 90", "12-60"],
+      ["壽命（小時）", "30,000", "1,000-8,000"],
+      ["發熱",         "低",    "高（鹵素）"],
+      ["色溫選擇",     "三色溫", "固定"],
+      ["啟動",         "瞬時",  "預熱"],
+      ["回收期",       "1.5-2 年", "—"]
+    ]
+  },
+
+  "faq": [
+    {"q": "LED 嵌燈孔徑怎麼挑？", "a": "嵌燈孔徑要對應天花板既有孔位，2.5-3 吋適合走道、廁所、櫃內；4-5 吋適合住宅與小辦公；6-8 吋適合商辦、飯店、商場挑高空間。"},
+    {"q": "LED 嵌燈和筒燈差別？", "a": "嵌燈是嵌入天花板齊平安裝，光線聚焦向下；筒燈通常凸出天花板，光束角較廣。嵌燈視覺更俐落，筒燈施工彈性大。"},
+    {"q": "LED 嵌燈光束角怎麼選？", "a": "30° 適合重點照明（畫作、商品）、60° 適合一般天花照明、120° 適合洗牆或廣角補光。"},
+    {"q": "LED 嵌燈壽命多長？", "a": "中輝 LED 嵌燈標示壽命 30,000 小時，每天使用 8 小時可用 10 年以上，提供 3 年完整保固。"},
+    {"q": "LED 嵌燈會不會傷眼？", "a": "中輝 LED 嵌燈採 IC 恆流驅動，閃爍率 < 5%，演色性 CRI ≥ 80，符合長時間用眼空間需求。"},
+    {"q": "LED 嵌燈節能多少？", "a": "相較傳統 50W 鹵素嵌燈，10W LED 嵌燈光效相當卻節能 80%，每年每盞約省 1,200 度電。"},
+    {"q": "LED 嵌燈通過哪些認證？", "a": "中輝 LED 嵌燈通過 BSMI 安規認證與節能標章，部分型號另獲能源效率標示。"}
+  ],
+
+  "rating": {"value": 4.8, "count": 89},
+
+  "breadcrumb": [
+    {"name": "首頁", "url": "https://winstartek.com/"},
+    {"name": "室內及商業照明", "url": "https://winstartek.com/products/indoor-and-commercial-lighting/"},
+    {"name": "LED 嵌燈", "url": "https://winstartek.com/products/indoor-and-commercial-lighting/recessed-downlight/"}
+  ],
+
+  "cta": {
+    "title":    "為您的空間規劃最適合的 LED 嵌燈",
+    "subtitle": "中輝光電專業團隊提供照明設計、現場勘查、規格建議、安裝諮詢一站式服務",
+    "url":      "https://winstartek.com/contact-us/",
+    "btn":      "立即詢價聯絡"
+  }
+}

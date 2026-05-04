@@ -1,0 +1,45 @@
+# WordPress core (will be installed separately)
+/wp-admin/
+/wp-includes/
+/wp-*.php
+/xmlrpc.php
+/index.php
+/license.txt
+/readme.html
+/local-xdebuginfo.php
+/malcare-waf.php
+
+# Sensitive
+/wp-config.php
+/wp-salt.php
+
+# Logs and cache (regenerated)
+/wp-content/cache/
+/wp-content/upgrade/
+/wp-content/wflogs/
+/wp-content/uploads/wp-security-audit-log/
+*.log
+debug.log
+
+# Uploads — large binary files; managed via SFTP / WPvivid
+/wp-content/uploads/
+
+# Plugin/theme caches and minified outputs
+/wp-content/plugins/*/vendor/
+/wp-content/wpvivid_uploads/
+/wp-content/ai1wm-backups/
+/wp-content/uploads-webpc/
+
+# Local + IDE
+.DS_Store
+.idea/
+.vscode/
+Thumbs.db
+*.swp
+*.bak
+
+# Bundled inactive backups (we kept .disabled folders, but skip if they grow)
+/wp-content/plugins/*.disabled/
+
+# Elementor regenerated CSS
+/wp-content/uploads/elementor/css/

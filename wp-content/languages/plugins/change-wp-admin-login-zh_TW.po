@@ -1,0 +1,80 @@
+# Translation of Plugins - Change wp-admin login - Stable (latest release) in Chinese (Taiwan)
+# This file is distributed under the same license as the Plugins - Change wp-admin login - Stable (latest release) package.
+msgid ""
+msgstr ""
+"PO-Revision-Date: 2023-03-21 19:39:22+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: GlotPress/4.0.0-alpha.4\n"
+"Language: zh_TW\n"
+"Project-Id-Version: Plugins - Change wp-admin login - Stable (latest release)\n"
+
+#. Author URI of the plugin
+msgid "https://wpexperts.io/"
+msgstr "https://wpexperts.io/"
+
+#. Author of the plugin
+msgid "wpexpertsio"
+msgstr "wpexpertsio"
+
+#: includes/class-change-wp-admin-login.php:243
+msgid "If you leave the above field empty the plugin will add a redirect to the website homepage."
+msgstr "如果上方欄位留空，這個外掛會新增一個前往首頁的重新導向。"
+
+#: includes/class-change-wp-admin-login.php:183
+msgid "Redirect URL"
+msgstr "重新導向網址"
+
+#: includes/class-change-wp-admin-login.php:175
+msgid "Login URL"
+msgstr "登入網址"
+
+#: includes/class-change-wp-admin-login.php:281
+msgid "This feature is not enabled."
+msgstr "這項功能尚未啟用。"
+
+#: includes/class-change-wp-admin-login.php:264
+#: includes/class-change-wp-admin-login.php:266
+msgid "Settings"
+msgstr "設定"
+
+#: includes/class-change-wp-admin-login.php:258
+msgid "Your login page is now here: %s. Bookmark this page!"
+msgstr "目前這個網站的登入頁面為 %s，請將這個頁面加入書籤。"
+
+#: includes/class-change-wp-admin-login.php:234
+msgid "Network Settings"
+msgstr "多站網路設定"
+
+#: includes/class-change-wp-admin-login.php:234
+msgid "To set a networkwide default, go to %s."
+msgstr "如需設定多站網路登入網址全域預設值，請前往 [%s]。"
+
+#: includes/class-change-wp-admin-login.php:145
+msgid "Networkwide default"
+msgstr "多站網路登入網址全域預設值"
+
+#: includes/class-change-wp-admin-login.php:142
+msgid "This option allows you to set a networkwide default, which can be overridden by individual sites. Simply go to to the site’s permalink settings to change the url."
+msgstr "這項設定可讓多站網路管理員設定多站網路登入網址全域預設值，但個別網站的設定可覆寫這個預設值。個別網站如需變更這項設定，請前往 [永久連結] 變更登入網址。"
+
+#: includes/class-change-wp-admin-login.php:108
+msgid "Please upgrade to the latest version of WordPress to activate %s."
+msgstr "請將 WordPress 更新至最新版本以啟用 %s。"
+
+#. Description of the plugin
+msgid "Change wp-admin login to whatever you want. example: http://www.example.com/my-login. Go under Settings and then click on \"Permalinks\" and change your URL under \"Change wp-admin login\"."
+msgstr "這個外掛可以依需求對 wp-admin 進行變更，例如將之變更為 https://www.example.com/my-login。前往 [設定] 選單中的 [永久連結]，便可以在 [變更 wp-admin 登入] 下方進行變更。"
+
+#. Plugin URI of the plugin
+msgid "https://wordpress.org/plugins/change-wp-admin-login/"
+msgstr "https://tw.wordpress.org/plugins/change-wp-admin-login/"
+
+#. Plugin Name of the plugin
+#: includes/class-change-wp-admin-login.php:108
+#: includes/class-change-wp-admin-login.php:141
+#: includes/class-change-wp-admin-login.php:168
+msgid "Change wp-admin login"
+msgstr "Change wp-admin Login"
