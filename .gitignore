@@ -26,9 +26,16 @@ debug.log
 
 # Plugin/theme caches and minified outputs
 /wp-content/plugins/*/vendor/
-/wp-content/wpvivid_uploads/
 /wp-content/ai1wm-backups/
 /wp-content/uploads-webpc/
+
+# WPvivid backups and staging (large binary files)
+/wp-content/wpvivid_uploads/
+/wp-content/wpvividbackups/
+/wp-content/wpvivid_staging/
+
+# Smush generated files
+/wp-content/smush-webp/
 
 # Local + IDE
 .DS_Store
