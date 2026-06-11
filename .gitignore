@@ -1,0 +1,47 @@
+# Local backups and restored archives
+remote-backups/
+backup_extract/
+_restore/
+_extract/
+_migrate_tmp/
+exports/
+pdf-renders/
+
+# Browser and automation profiles
+.edge*/
+edge-*/
+.playwright-mcp/
+
+# Downloaded/rendered verification artifacts
+*.html
+*.png
+*.jpg
+*.jpeg
+*.webp
+*.pdf
+*.headers
+*.out
+*.txt
+*.json
+
+# WordPress/database/package backups
+*.zip
+*.sql
+*.gz
+*.tar
+*.tgz
+
+# Local credentials, cookies, app passwords, and ad-hoc deploy scripts
+*.cookies
+*cookies*
+*.ps1
+.apppass*
+.wp-*
+
+# Runtime/cache files
+__pycache__/
+*.pyc
+node_modules/
+.tmp/
+.pip_cache/
+
