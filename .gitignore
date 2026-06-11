@@ -2,3 +2,35 @@
 *.log
 .DS_Store
 Thumbs.db
+
+# Local live-site backups and bulky WordPress backup artifacts
+remote-backups/
+backup_extract/
+_restore/
+_extract/
+*.zip
+*.sql
+*.gz
+*.tar
+*.tgz
+
+# Credentials, cookies, and local-only deploy helpers
+*.cookies
+*cookies*
+.wp-*
+.apppass*
+
+# Downloaded verification output and browser automation profiles
+*.html
+*.png
+*.jpg
+*.jpeg
+*.webp
+*.pdf
+*.headers
+*.out
+*.txt
+*.json
+.edge*/
+edge-*/
+.playwright-mcp/
