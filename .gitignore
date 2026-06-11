@@ -45,6 +45,34 @@ Thumbs.db
 *.swp
 *.bak
 
+# Local live-site backups, verification output, and credentials
+/remote-backups/
+/backup_extract/
+/_restore/
+/_extract/
+*.zip
+*.sql
+*.gz
+*.tar
+*.tgz
+*.cookies
+*cookies*
+.wp-*
+.apppass*
+*.html
+*.png
+*.jpg
+*.jpeg
+*.webp
+*.pdf
+*.headers
+*.out
+*.txt
+*.json
+.edge*/
+edge-*/
+.playwright-mcp/
+
 # Bundled inactive backups (we kept .disabled folders, but skip if they grow)
 /wp-content/plugins/*.disabled/
 
