@@ -1,0 +1,43 @@
+﻿{
+    "ok": true,
+    "backup": {
+        "post_id": 20443,
+        "post_title": "LED 黑板燈",
+        "post_name": "classroom-board-light",
+        "post_excerpt": "中輝 LED 黑板燈採磨光鋼板白色烤漆與內置鏡面反射鋁板，可提升黑板面照明效果，適合教室黑板與教學空間使用。",
+        "meta": {
+            "rank_math_title": "LED 黑板燈｜T5/T8 教室黑板照明 - 中輝光電",
+            "rank_math_description": "中輝 LED 黑板燈提供 A 型與 B 型配置，使用 T8 LED 燈管，具鏡面反射鋁板與 5700K 色溫，適合教室黑板、白板與教學空間照明。",
+            "rank_math_focus_keyword": "LED 黑板燈,教室黑板燈,T5 黑板燈,T8 黑板燈",
+            "_aioseo_title": "LED 黑板燈｜T5/T8 教室黑板照明 - 中輝光電",
+            "_aioseo_description": "中輝 LED 黑板燈提供 A 型與 B 型配置，使用 T8 LED 燈管，具鏡面反射鋁板與 5700K 色溫，適合教室黑板、白板與教學空間照明。",
+            "_aioseo_keywords": "LED 黑板燈,教室黑板燈,T5 黑板燈,T8 黑板燈",
+            "_thumbnail_id": "26928"
+        }
+    },
+    "updated": {
+        "rank_math_title": "LED 黑板燈｜鏡面反射鋁板教室黑板照明 - 中輝光電",
+        "rank_math_description": "中輝 LED 黑板燈採鏡面反射鋁板與白色烤漆燈體，提供 A 型/B 型、20W x 1/20W x 2 與 5700K 色溫，適合教室黑板、白板與教學空間照明。",
+        "rank_math_focus_keyword": "LED 黑板燈,教室黑板燈,黑板照明,白板照明,鏡面反射鋁板黑板燈,T8 LED 黑板燈,A型黑板燈,B型黑板燈,教室照明",
+        "_aioseo_title": "LED 黑板燈｜鏡面反射鋁板教室黑板照明 - 中輝光電",
+        "_aioseo_description": "中輝 LED 黑板燈採鏡面反射鋁板與白色烤漆燈體，提供 A 型/B 型、20W x 1/20W x 2 與 5700K 色溫，適合教室黑板、白板與教學空間照明。",
+        "_aioseo_keywords": "LED 黑板燈,教室黑板燈,黑板照明,白板照明,鏡面反射鋁板黑板燈,T8 LED 黑板燈,A型黑板燈,B型黑板燈,教室照明"
+    },
+    "images": {
+        "https://winstartek.com/wp-content/uploads/2026/06/led-classroom-board-light-front.png": {
+            "attachment_id": 26928,
+            "updated": true,
+            "alt": "LED 黑板燈 A 型正面產品圖"
+        },
+        "https://winstartek.com/wp-content/uploads/2026/06/led-classroom-board-light-back.png": {
+            "attachment_id": 26941,
+            "updated": true,
+            "alt": "LED 黑板燈 B 型背面與吊掛支架產品圖"
+        },
+        "https://winstartek.com/wp-content/uploads/2026/06/led-classroom-board-light-scene.png": {
+            "attachment_id": 26954,
+            "updated": true,
+            "alt": "LED 黑板燈教室黑板照明應用場景"
+        }
+    }
+}
