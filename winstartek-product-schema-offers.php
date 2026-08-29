@@ -197,3 +197,18 @@ add_filter('rank_math/sitemap/post_type_archive_link', function ($archive_url, $
 
     return $archive_url;
 }, 99, 2);
+
+add_action('init', function () {
+    $path = (string) wp_parse_url($_SERVER['REQUEST_URI'] ?? '', PHP_URL_PATH);
+    if (!preg_match('#/product-sitemap[0-9]*\.xml$#', $path)) {
+        return;
+    }
+
+    ob_start(function ($xml) {
+        return preg_replace(
+            '#\s*<url>\s*<loc>https://winstartek\.com/product/</loc>.*?</url>#s',
+            '',
+            $xml
+        );
+    });
+}, 0);
