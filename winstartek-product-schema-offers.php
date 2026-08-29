@@ -24,6 +24,36 @@ function winstartek_schema_offer(): array
     ];
 }
 
+function winstartek_is_product_detail_context(): bool
+{
+    if (is_singular('product')) {
+        return true;
+    }
+
+    if (!is_page()) {
+        return false;
+    }
+
+    $path = trim((string) wp_parse_url(get_permalink(), PHP_URL_PATH), '/');
+    if ($path === '') {
+        return false;
+    }
+
+    $listing_paths = [
+        'products',
+        'products/indoor-and-commercial-lighting',
+        'products/outdoor-lighting',
+        'products/industrial-lighting',
+        'products/light-source',
+        'products/engineering-project',
+        'products/energy-storage-system',
+        'products/special-application',
+        'products/energy-saving-label',
+    ];
+
+    return str_starts_with($path, 'products/') && !in_array($path, $listing_paths, true);
+}
+
 function winstartek_schema_product_stub(): array
 {
     $image = get_the_post_thumbnail_url(get_the_ID(), 'full');
@@ -91,7 +121,7 @@ function winstartek_add_offers_to_schema_node(&$node): void
 }
 
 add_filter('rank_math/json_ld', function ($data) {
-    if (!is_singular('product')) {
+    if (!winstartek_is_product_detail_context()) {
         return $data;
     }
 
@@ -100,7 +130,7 @@ add_filter('rank_math/json_ld', function ($data) {
 }, 99);
 
 add_filter('the_content', function ($content) {
-    if (!is_singular('product') || stripos($content, 'ws-product-schema') === false) {
+    if (!winstartek_is_product_detail_context() || stripos($content, 'ws-product-schema') === false) {
         return $content;
     }
 
@@ -123,8 +153,35 @@ add_filter('the_content', function ($content) {
     );
 }, 99);
 
+add_action('wp', function () {
+    if (!is_singular()) {
+        return;
+    }
+
+    global $wpdb;
+    $post_id = get_queried_object_id();
+    if (!$post_id) {
+        return;
+    }
+
+    $rows = $wpdb->get_results(
+        $wpdb->prepare(
+            "SELECT meta_id, meta_key, meta_value FROM {$wpdb->postmeta} WHERE post_id = %d AND meta_key LIKE %s",
+            $post_id,
+            'rank_math_schema%'
+        )
+    );
+
+    foreach ($rows as $row) {
+        $schema = maybe_unserialize($row->meta_value);
+        if (!is_array($schema) || empty($schema['@type'])) {
+            delete_metadata_by_mid('post', (int) $row->meta_id);
+        }
+    }
+}, 1);
+
 add_action('wp_head', function () {
-    if (!is_singular('product')) {
+    if (!winstartek_is_product_detail_context()) {
         return;
     }
 
@@ -132,3 +189,11 @@ add_action('wp_head', function () {
     echo wp_json_encode(winstartek_schema_product_stub(), JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
     echo "</script>\n";
 }, 99);
+
+add_filter('rank_math/sitemap/post_type_archive_link', function ($archive_url, $post_type) {
+    if ($post_type === 'product') {
+        return false;
+    }
+
+    return $archive_url;
+}, 99, 2);
