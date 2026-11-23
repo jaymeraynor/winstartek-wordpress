@@ -1,14 +1,18 @@
 <?php
 /**
  * Plugin Name: Winstartek Product Schema Offers
- * Description: Adds quote-style offers to Winstartek product structured data so product pages satisfy Google product snippet requirements.
- * Version: 1.0.0
+ * Description: Winstartek product structured data helpers. Since 2026-11 (schema consolidation, option B) it outputs NO Offer/AggregateOffer: it strips offers from product schema, removes duplicate BreadcrumbList from inline ws-product-schema, and prints a fallback Product stub only on product pages that have no other product schema.
+ * Version: 2.0.0
  */
 
 if (!defined('ABSPATH')) {
     exit;
 }
 
+/**
+ * @deprecated 2026-11 schema 整併（乙方案：不輸出 Offer）。本外掛已不再呼叫；
+ * 保留函式只為避免其他未備份到的程式（如 theme）直接呼叫時 fatal error。
+ */
 function winstartek_schema_offer(): array
 {
     return [
@@ -61,7 +65,7 @@ function winstartek_schema_product_stub(): array
     $product = [
         '@type' => 'Product',
         '@id' => trailingslashit(get_permalink()) . '#product',
-        'name' => wp_strip_all_tags(get_the_title()),
+        'name' => html_entity_decode(wp_strip_all_tags(get_the_title()), ENT_QUOTES | ENT_HTML5, 'UTF-8'),
         'url' => get_permalink(),
         'sku' => get_post_field('post_name', get_the_ID()) ?: (string) get_the_ID(),
         'brand' => [
@@ -73,7 +77,6 @@ function winstartek_schema_product_stub(): array
             'name' => '中輝光電股份有限公司',
             'url' => home_url('/'),
         ],
-        'offers' => winstartek_schema_offer(),
     ];
 
     $description = wp_strip_all_tags(get_the_excerpt());
@@ -94,47 +97,97 @@ function winstartek_is_product_schema_node($type): bool
     return in_array('Product', $types, true) || in_array('ProductGroup', $types, true);
 }
 
-function winstartek_add_offers_to_schema_node(&$node): void
+/**
+ * 2026-11 schema 整併（乙方案）：移除 Product／ProductGroup（含 hasVariant 變體）上的 offers。
+ * 不新增任何節點（舊版會在缺 hasVariant 時自動補一個 stub 變體，已取消）。
+ */
+function winstartek_strip_offers_from_schema_node(&$node): void
 {
     if (!is_array($node)) {
         return;
     }
 
     if (isset($node['@type']) && winstartek_is_product_schema_node($node['@type'])) {
-        if (empty($node['offers'])) {
-            $node['offers'] = winstartek_schema_offer();
-        }
-
-        if (in_array('ProductGroup', is_array($node['@type']) ? $node['@type'] : [$node['@type']], true) && empty($node['hasVariant'])) {
-            $variant = winstartek_schema_product_stub();
-            $variant['isVariantOf'] = ['@id' => $node['@id'] ?? trailingslashit(get_permalink()) . '#productgroup'];
-            $node['hasVariant'] = [$variant];
-        }
+        unset($node['offers']);
     }
 
     foreach ($node as &$child) {
         if (is_array($child)) {
-            winstartek_add_offers_to_schema_node($child);
+            winstartek_strip_offers_from_schema_node($child);
         }
     }
     unset($child);
 }
 
-add_filter('rank_math/json_ld', function ($data) {
-    if (!winstartek_is_product_detail_context()) {
-        return $data;
+/**
+ * @deprecated 2026-11：舊名稱保留為相容層，行為改為「移除 offers」，避免外部呼叫 fatal。
+ */
+function winstartek_add_offers_to_schema_node(&$node): void
+{
+    winstartek_strip_offers_from_schema_node($node);
+}
+
+/**
+ * 內文 ws-product-schema 若自帶 BreadcrumbList，移除之（Rank Math 已輸出一份）。
+ */
+function winstartek_strip_breadcrumb_nodes(array $data): array
+{
+    $is_bc = static function ($node): bool {
+        if (!is_array($node) || !isset($node['@type'])) {
+            return false;
+        }
+        $types = is_array($node['@type']) ? $node['@type'] : [$node['@type']];
+        return in_array('BreadcrumbList', $types, true);
+    };
+
+    if (isset($data['@graph']) && is_array($data['@graph'])) {
+        $data['@graph'] = array_values(array_filter($data['@graph'], static fn($n) => !$is_bc($n)));
+    } elseif ($data !== [] && array_keys($data) === range(0, count($data) - 1)) {
+        $data = array_values(array_filter($data, static fn($n) => !$is_bc($n)));
     }
 
-    winstartek_add_offers_to_schema_node($data);
     return $data;
-}, 99);
+}
 
-add_filter('the_content', function ($content) {
-    if (!winstartek_is_product_detail_context() || stripos($content, 'ws-product-schema') === false) {
+/**
+ * 頁面是否已由其他來源輸出「主」Product/ProductGroup（2026-11 schema 整併）。
+ * 有的話，wp_head 的 stub Product 就不再輸出，避免同頁兩個 Product 實體／同 @id 衝突。
+ */
+function winstartek_page_has_primary_product_schema(): bool
+{
+    $post_id = (int) get_queried_object_id();
+    if (!$post_id) {
+        return false;
+    }
+
+    // 1) 專屬頁外掛（ws-linear-lamp-product、ws-ward-light-schema、winstartek-standard-product-system）以 filter 宣告
+    if (apply_filters('winstartek_has_primary_product_schema', false, $post_id)) {
+        return true;
+    }
+
+    // 2) 標準產品系統有資料時會自行輸出 ProductGroup（filter 之外的保險）
+    if (function_exists('ws_spt_has_data') && ws_spt_has_data($post_id)) {
+        return true;
+    }
+
+    // 3) 內文（post_content 或 Elementor 資料）已內嵌 ws-product-schema JSON-LD
+    if (stripos((string) get_post_field('post_content', $post_id), 'ws-product-schema') !== false) {
+        return true;
+    }
+
+    return stripos((string) get_post_meta($post_id, '_elementor_data', true), 'ws-product-schema') !== false;
+}
+
+/**
+ * 處理內文中的 <script class="ws-product-schema">：移除 offers 與 BreadcrumbList。
+ */
+function winstartek_filter_inline_product_schema($content)
+{
+    if (!is_string($content) || !winstartek_is_product_detail_context() || stripos($content, 'ws-product-schema') === false) {
         return $content;
     }
 
-    return preg_replace_callback(
+    $result = preg_replace_callback(
         '#(<script\b[^>]*class=["\'][^"\']*\bws-product-schema\b[^"\']*["\'][^>]*>)(.*?)(</script>)#is',
         function ($matches) {
             $json = trim(html_entity_decode($matches[2], ENT_QUOTES | ENT_HTML5, 'UTF-8'));
@@ -144,14 +197,30 @@ add_filter('the_content', function ($content) {
                 return $matches[0];
             }
 
-            winstartek_add_offers_to_schema_node($data);
+            winstartek_strip_offers_from_schema_node($data);
+            $data = winstartek_strip_breadcrumb_nodes($data);
             $encoded = wp_json_encode($data, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
 
             return $encoded ? $matches[1] . $encoded . $matches[3] : $matches[0];
         },
         $content
     );
+
+    return is_string($result) ? $result : $content;
+}
+
+add_filter('rank_math/json_ld', function ($data) {
+    if (!winstartek_is_product_detail_context()) {
+        return $data;
+    }
+
+    winstartek_strip_offers_from_schema_node($data);
+    return $data;
 }, 99);
+
+add_filter('the_content', 'winstartek_filter_inline_product_schema', 99);
+// Elementor 版面輸出的內容另走這個 filter；同一函式可重複套用（冪等）
+add_filter('elementor/frontend/the_content', 'winstartek_filter_inline_product_schema', 99);
 
 add_action('wp', function () {
     if (!is_singular()) {
@@ -181,7 +250,12 @@ add_action('wp', function () {
 }, 1);
 
 add_action('wp_head', function () {
-    if (!winstartek_is_product_detail_context()) {
+    // 2026-11 整併：已有主產品 schema 的頁面不印 stub；stub 本身不含 Offer。
+    // 若日後決定完全不輸出 stub，在任一 mu-plugin 加：add_filter('winstartek_output_product_stub', '__return_false');
+    if (!winstartek_is_product_detail_context() || winstartek_page_has_primary_product_schema()) {
+        return;
+    }
+    if (!apply_filters('winstartek_output_product_stub', true, (int) get_queried_object_id())) {
         return;
     }
 
